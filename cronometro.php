@@ -6,6 +6,47 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ruleta</title>
+    <style>
+        body {
+            text-align: center;
+            vertical-align: middle;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background-image: url("reloj.webp");
+            background-size: cover;
+        }
+        #tiempo{
+            margin: 10% 35% 0 35%;
+            color: peru;
+            background-color: black;
+            border-radius: 15px 15px 0 0;
+        }
+        #cuenta{
+            margin: 0 35% 0 35%;
+            padding: 1%;
+            color: aquamarine;
+            background-color: black;
+            border-radius: 0 0 15px 15px;
+        }
+        img, h1{
+            position: fixed;
+        }
+        h1{
+            top: 60%;
+            left: 30%;
+            width: 30%;
+            height: 20%;
+            text-align: center;
+            vertical-align: middle;
+            background-color: white;
+            border-radius: 25%;
+        }
+        img{
+            top: 60%;
+            left: 60%;
+        }
+    </style>
 </head>
 <body>
 <?php
@@ -19,11 +60,44 @@
     $probabilidad = rand(1, 100);
     foreach ($opciones as $opcion) {
         if ($probabilidad <= $opcion['porcentaje']) {
-            echo "<h1>" . $opcion['nombre'] . " minutos</h1>";
+            echo "<h2 id='tiempo'>" . $opcion['nombre'] . " minutos: </h2>";
             break;
         }
     }
-
 ?>
+    <h1 id="cuenta"></h1>
+<script> //sacado de W3Schools
+    // Set the date we're counting down to
+    var minutos = "<?php echo $opcion['nombre']; ?>";
+    var countDown = minutos * 60 * 1000;
+    var contar = 0;
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+        // Find the distance between now and the count down date
+        var distance = countDown - contar;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="demo"
+        document.getElementById("cuenta").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+        // Get today's date and time
+        contar = contar + 1000;
+        // If the count down is finished, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("cuenta").innerHTML = "0d 0h 0m 0s";
+        }
+    }, 1000);
+</script>
+    <h1>¡Aguanta, ya falta pocoo!!!</h1>
+    <img src="bano.png" alt="baño">
 </body>
 </html>
