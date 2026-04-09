@@ -9,7 +9,6 @@
     <style>
         body {
             text-align: center;
-            vertical-align: middle;
             height: 100%;
             width: 100%;
             overflow: hidden;
@@ -29,22 +28,21 @@
             background-color: black;
             border-radius: 0 0 15px 15px;
         }
-        img, h1{
+        img, #mensaje{
             position: fixed;
         }
-        h1{
+        #mensaje{
             top: 60%;
             left: 30%;
-            width: 30%;
-            height: 20%;
-            text-align: center;
-            vertical-align: middle;
+            width: 25%;
+            height: 15%;
             background-color: white;
-            border-radius: 25%;
+            border-radius: 60%;
         }
         img{
-            top: 60%;
-            left: 60%;
+            top: 63%;
+            left: 55%;
+            height: 30%;
         }
     </style>
 </head>
@@ -97,7 +95,7 @@
         }
     }, 1000);
 </script>
-    <h1>¡Aguanta, ya falta pocoo!!!</h1>
+    <h1 id="mensaje">¡Aguanta, ya falta pocoo!!!</h1>
     <img src="bano.png" alt="baño">
 </body>
 </html>
